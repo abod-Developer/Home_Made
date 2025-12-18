@@ -45,6 +45,16 @@ class AuthViewModel: ObservableObject{
     }
     
     
+    func signout(email : String , password : String){
+        do{
+            try Auth.auth().signOut()
+            self.isLoggedIn = false
+        }catch{
+            self.error = "فشل في تسجيل الخروج"
+        }
+        
+    }
+    
     
     
 }
