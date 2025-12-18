@@ -11,7 +11,7 @@ struct SignInView: View {
     @State var username : String = ""
     @State var password : String = ""
     @State private var isOpenEye: Bool = false
-    @StateObject var authVM = AuthViewModel()
+    @EnvironmentObject var authVM : AuthViewModel
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 40)
@@ -124,4 +124,5 @@ struct SignInView: View {
 }
 #Preview {
     SignInView()
+        .environmentObject(AuthViewModel())
 }

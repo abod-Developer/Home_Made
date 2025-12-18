@@ -24,8 +24,9 @@ struct HomeMadeApp: App {
         WindowGroup {
 //            ContentView()
             //SignInView()
-            SignupView()
+            //SignupView()
            // HomeView()
+            RootView()
         }
     }
 }

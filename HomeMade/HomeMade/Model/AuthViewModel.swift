@@ -15,6 +15,7 @@ class AuthViewModel: ObservableObject{
     @Published var isLoggedIn : Bool = false
     @Published var error : String = ""
     
+    
     func login(email : String, password : String){
         
         Auth.auth().signIn(withEmail: email, password: password){ result , error in
