@@ -22,10 +22,7 @@ struct HomeMadeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            //SignInView()
-            //SignupView()
-           // HomeView()
+
             RootView()
         }
     }

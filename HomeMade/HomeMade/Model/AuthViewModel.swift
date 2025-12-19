@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 import SwiftUI
 import Combine
+import FirebaseFirestore
 
 
 class AuthViewModel: ObservableObject{
@@ -41,6 +42,17 @@ class AuthViewModel: ObservableObject{
                 self.error = error.localizedDescription
                 return
             }
+            
+            guard let user = result?.user else {return}
+            
+            let db = Firestore.firestore()
+            
+            db.collection("user")
+                .document(user.uid)
+                .setData([
+                    "email" : user.email ?? "",
+                    "createdAt" : Timestamp()
+                ])
             self.isLoggedIn = true
         }
     }

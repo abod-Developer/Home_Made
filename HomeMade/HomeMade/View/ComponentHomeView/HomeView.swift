@@ -78,7 +78,6 @@ struct HomeView: View {
                 .padding()
                //
                 Stores()
-                .padding(.horizontal)
                 .scrollIndicators(.hidden)
                 
                 
