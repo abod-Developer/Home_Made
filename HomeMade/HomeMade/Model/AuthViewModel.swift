@@ -31,12 +31,15 @@ class AuthViewModel: ObservableObject{
     }
     
     
-    func signup(email: String , password : String , confirmPassword : String){
+    func signup(email: String , password : String , confirmPassword : String, role : UserRole ){
         guard password == confirmPassword else {
             self.error = "The Password and confirm passwors do not match"
             return
         }
-        
+        guard password.count >= 6 else{
+            self.error = "كلمة المرور يجب ان تكون 6 حروف على الاقل"
+            return
+        }
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 self.error = error.localizedDescription
@@ -51,6 +54,7 @@ class AuthViewModel: ObservableObject{
                 .document(user.uid)
                 .setData([
                     "email" : user.email ?? "",
+                    "role" : role == .family ? "family" : "customer",
                     "createdAt" : Timestamp()
                 ])
             self.isLoggedIn = true
@@ -68,6 +72,7 @@ class AuthViewModel: ObservableObject{
         
     }
     
+
     
     
 }

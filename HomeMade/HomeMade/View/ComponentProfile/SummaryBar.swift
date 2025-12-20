@@ -11,14 +11,16 @@ struct SummaryBar: View {
     var body: some View {
         HStack{
          statItem(title: "المشتريات", value: 2)
+                
                 Divider()
-            statItem(title: " المبيعات المكتمله", value: 2)
+            statItem(title: " المبيعات المكتمله", value: 0)
             Divider()
-            statItem(title: "المبيعات النشطة", value: 2)
+            statItem(title: "المبيعات النشطة", value: 3)
             Divider()
             statItem(title: "اجمالي المبيعات", value: 2)
             Divider()
         }
+        .frame(width: 380, height: 48)
        
     }
     func statItem(title : String , value : Int) -> some View{
@@ -27,7 +29,8 @@ struct SummaryBar: View {
                 
                 .font(.footnote.bold())
                 .foregroundStyle(.gray)
-                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: true, vertical: true)
             Text("\(value)")
                 .foregroundStyle(.black)
                 .bold()
