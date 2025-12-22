@@ -12,7 +12,9 @@ struct SignupView: View {
     @State private var password : String = ""
     @State private var confirmPassword : String = ""
     @State private var selectedRole : UserRole = .customer
-    @EnvironmentObject var authVM : AuthViewModel
+    @StateObject var authVM = AuthViewModel()
+    
+    let role : String
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 40)
@@ -31,8 +33,7 @@ struct SignupView: View {
                 VStack(spacing:16){
                     // textField
                     ComponentTextField()
-                    // section with picker
-                   SectionAndPicker()
+
                     
                     VStack {
                         Button {
@@ -41,7 +42,9 @@ struct SignupView: View {
                                 password: password,
                                 confirmPassword: confirmPassword,
                                 role: selectedRole
+                                
                             )
+                            print("pqassword", password.count)
                         } label: {
                             Text("Sign Up")
                                 .bold()
@@ -67,7 +70,7 @@ struct SignupView: View {
     }
 }
 #Preview {
-    SignupView()
+    SignupView(role: "")
         .environmentObject(AuthViewModel())
 }
 

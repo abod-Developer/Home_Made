@@ -75,6 +75,8 @@ struct ComponentTextField: View {
                         .onChange(of: confirmPassword){
                             authVM.error = ""
                         }
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled(true)
                 }
             } else{
                 SecureField(text: $confirmPassword){

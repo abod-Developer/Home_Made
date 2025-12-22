@@ -36,7 +36,9 @@ class AuthViewModel: ObservableObject{
             self.error = "The Password and confirm passwors do not match"
             return
         }
-        guard password.count >= 6 else{
+        
+        let cleanPassword = password.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard cleanPassword.count >= 5 else{
             self.error = "كلمة المرور يجب ان تكون 6 حروف على الاقل"
             return
         }

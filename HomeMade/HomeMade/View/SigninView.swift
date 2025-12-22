@@ -12,7 +12,8 @@ struct SignInView: View {
     @State var password : String = ""
     @State private var isOpenEye: Bool = false
     @State private var showSignUp = false
-    @EnvironmentObject var authVM : AuthViewModel
+    @StateObject var authVM = AuthViewModel()
+  
     var body: some View {
         NavigationStack {
             ZStack {
@@ -108,7 +109,7 @@ struct SignInView: View {
                         
                         
                         
-                        NavigationLink(destination: SignupView()) {
+                        NavigationLink(destination: SignupView(role: "")) {
                             HStack {
                                 Text("Don't have an account?")
                                     .foregroundStyle(Color(red: 0.9, green: 0.6, blue: 0.0))
