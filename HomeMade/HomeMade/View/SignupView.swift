@@ -18,16 +18,17 @@ struct SignupView: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 40)
+                .fill(Color(.background))
             
                 .frame(width: 344, height:500 )
-                .foregroundStyle(Color(.darkGray))
+                //.foregroundStyle(Color(.color))
             
             VStack(spacing: 24){
                 //Text
                 Text("Sign Up")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(.color)
                 
                 // Text Field
                 VStack(spacing:16){
@@ -48,10 +49,10 @@ struct SignupView: View {
                         } label: {
                             Text("Sign Up")
                                 .bold()
-                                .foregroundStyle(.orange)
+                                .foregroundStyle(.white)
                         }
                         .frame(width: 300,height: 48)
-                        .background(Color(red: 0.5, green: 0.3, blue: 0.0))
+                        .background(Color(.color))
                         .clipShape(RoundedRectangle(cornerRadius: 400))
                         
                     }

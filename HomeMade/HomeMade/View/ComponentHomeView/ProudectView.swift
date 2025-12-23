@@ -23,9 +23,9 @@ struct ProudectView: View {
                     VStack(alignment: .leading){
                         Text("Food")
                             .font(.title2)
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(.white)
                         Text("Delicious things we eat to enjoy and stay healthy")
-                            .foregroundStyle(.orange.opacity(0.8))
+                            .foregroundStyle(.white)
                             .font(.caption)
                             .lineLimit(2)
                         
@@ -33,7 +33,7 @@ struct ProudectView: View {
                 }
                 .padding(8)
                 .frame(width: 366, height: 114)
-                .background(Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.8))
+                .background(Color(.color))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 
                 

@@ -29,7 +29,7 @@ struct ComponentTextField: View {
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(lineWidth: 1.5)
-                .foregroundStyle(.orange)
+                .foregroundStyle(.color)
         }
         
         HStack {
@@ -54,7 +54,7 @@ struct ComponentTextField: View {
                 isOpenEye.toggle()
             } label: {
                 Image(systemName: isOpenEye ? "eye" : "eye.slash")
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(.color)
             }
         }
         .padding(.horizontal)
@@ -64,7 +64,7 @@ struct ComponentTextField: View {
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(lineWidth: 1.5)
-                .foregroundStyle(.orange)
+                .foregroundStyle(.color)
         }
         
         HStack{
@@ -92,7 +92,7 @@ struct ComponentTextField: View {
                 isOpenEye.toggle()
             } label: {
                 Image(systemName: isOpenEye ? "eye" : "eye.slash")
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(.color)
             }
         }
         .padding(.horizontal)
@@ -102,7 +102,7 @@ struct ComponentTextField: View {
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(lineWidth: 1.5)
-                .foregroundStyle(.orange)
+                .foregroundStyle(.color)
         }
     }
 }

@@ -20,12 +20,12 @@ struct SignInView: View {
                 RoundedRectangle(cornerRadius: 40)
                 
                     .frame(width: 344, height:400 )
-                    .foregroundStyle(Color(.darkGray))
+                    .foregroundStyle(Color(.background))
                 VStack(alignment: .center, spacing:24){
                     Text("Sign In")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(.color)
                     
                     VStack(spacing: 16){
                         TextField(text: $username, label: {
@@ -44,7 +44,7 @@ struct SignInView: View {
                         .overlay {
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(lineWidth: 2)
-                                .foregroundStyle(.orange)
+                                .foregroundStyle(.color)
                         }
                         
                         
@@ -67,7 +67,7 @@ struct SignInView: View {
                                 isOpenEye.toggle()
                             } label: {
                                 Image(systemName: isOpenEye ? "eye" : "eye.slash")
-                                    .foregroundStyle(.orange)
+                                    .foregroundStyle(.color)
                             }
                             
                         }
@@ -78,7 +78,7 @@ struct SignInView: View {
                         .overlay {
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(lineWidth: 2)
-                                .foregroundStyle(.orange)
+                                .foregroundStyle(.color)
                             
                         }
                         
@@ -91,10 +91,10 @@ struct SignInView: View {
                         } label: {
                             Text("Sign In")
                                 .bold()
-                                .foregroundStyle(.orange)
+                                .foregroundStyle(.white)
                         }
                         .frame(width: 300,height: 48)
-                        .background(Color(red: 0.5, green: 0.3, blue: 0.0))
+                        .background(Color(.color))
                         .clipShape(RoundedRectangle(cornerRadius: 400))
                         
                         // show Error Massage
@@ -112,9 +112,9 @@ struct SignInView: View {
                         NavigationLink(destination: SignupView(role: "")) {
                             HStack {
                                 Text("Don't have an account?")
-                                    .foregroundStyle(Color(red: 0.9, green: 0.6, blue: 0.0))
+                                    .foregroundStyle(Color(.color))
                                 Text("Sign Up")
-                                    .foregroundStyle(.orange)
+                                    .foregroundStyle(.color)
                                     .bold()
                             }
                         }
@@ -122,8 +122,14 @@ struct SignInView: View {
                         
                         
                         HStack(spacing: 8){
-                            Image(.image3)
-                            Image(.image2)
+                            Image(.image4)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                
+                            
+                            Image(.image5)
+                                .resizable()
+                                .frame(width: 50, height: 50)
                         }
                         
                     }

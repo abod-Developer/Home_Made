@@ -22,7 +22,7 @@ struct Stores: View {
                         .overlay {
                             Circle()
                                 .stroke(lineWidth: 2)
-                                .foregroundStyle(.orange)
+                                .foregroundStyle(Color(.color))
                         }
                 }
             }

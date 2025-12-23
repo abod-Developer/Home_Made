@@ -11,84 +11,94 @@ struct HomeView: View {
     let image = ["2","3","4","5","2","3","4","5"]
 
     var body: some View {
-        VStack {
-            HStack {
-                Image(.images1)
-                    .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 50))
-                    .frame(width: 50, height: 50)
-
-                Text("Hello, Abod")
-                    .font(.headline)
-                    .padding(.horizontal, 8)
-
-                Spacer()
-
-                Button {
-                    // action
+        ZStack {
+            Rectangle()
+                .fill(Color("BackgroundColor"))
+                .ignoresSafeArea()
+            VStack {
+                HStack {
+                    Image(.images1)
+                        .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 50))
+                        .frame(width: 50, height: 50)
                     
-                } label: {
-                    Image(systemName: "line.3.horizontal")
-                        .font(.system(size: 24))
-                        .foregroundStyle(Color(red: 0.8, green: 0.3, blue: 0.0))
-                        .fontWeight(.bold)
+                    Text("Hello, Abod")
+                        .font(.headline)
+                        .foregroundStyle(Color("MainColor"))
+                        .padding(.horizontal, 8)
+                    
+                    Spacer()
+                    
+                    Button {
+                        // action
+                        
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .font(.system(size: 24))
+                            .foregroundStyle(Color(red: 0.8, green: 0.3, blue: 0.0))
+                            .fontWeight(.bold)
+                    }
                 }
-            }
-            .padding(.horizontal,10)
-            
-            .padding()
-
-            ScrollView(.vertical){
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        ForEach(image, id: \.self) { item in
-                            HStack(spacing:8){
-                                RoundedRectangle(cornerRadius: 30)
-                                    .frame(width: 333,height: 150)
-                                    .foregroundStyle(Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.8))
-                                
-                                
-                                    .overlay {
-                                        HStack {
-                                            Image("\(item)")
-                                                .resizable()
-                                                .scaledToFit()
-                                            //                                        .frame(width: 104,height: 104)
-                                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                                            Text("Spacial offer on Biryani Limited time")
-                                                .font(.system(size: 15))
-                                                .fontWeight(.regular)
-                                                .foregroundStyle(.orange)
-                                                .lineLimit(2)
-                                                .multilineTextAlignment(.center)
+                .padding(.horizontal,10)
+                
+                .padding()
+                
+                ScrollView(.vertical){
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach(image, id: \.self) { item in
+                                HStack(spacing:8){
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .frame(width: 333,height: 150)
+                                        .foregroundStyle(Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.8))
+                                    
+                                    
+                                        .overlay {
+                                            HStack {
+                                                Image("\(item)")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                //                                        .frame(width: 104,height: 104)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                                                Text("Spacial offer on Biryani Limited time")
+                                                    .font(.system(size: 15))
+                                                    .fontWeight(.regular)
+                                                    .foregroundStyle(.orange)
+                                                    .lineLimit(2)
+                                                    .multilineTextAlignment(.center)
+                                            }
+                                            .padding(.vertical,10)
                                         }
-                                        .padding(.vertical,10)
-                                    }
+                                }
                             }
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
-                }
-                
-                HStack{
-                    Text("Stores")
-                        .foregroundStyle(.orange.opacity(1.5))
-                    Spacer()
-                }
-                .padding()
-               //
-                Stores()
-                .scrollIndicators(.hidden)
-                
-                
-                Spacer()
+                    
+                    HStack{
+                        Text("Stores")
+                            .foregroundStyle(Color.color)
+                        Spacer()
+                    }
                     .padding()
-                //
-                ProudectView()
+                    //
+                    Stores()
+                        .scrollIndicators(.hidden)
+                    
+                    
+                    Spacer()
+                        .padding()
+                    //
+                    ProudectView()
+                }
+                .scrollIndicators(.hidden)
+                .padding(.horizontal)
+                .background(Color("BackgroundColor"))
+                
             }
-            .scrollIndicators(.hidden)
-            .padding(.horizontal)
+            
         }
+        
        
     }
 }
