@@ -22,24 +22,28 @@ struct ProudectView: View {
                     
                     VStack(alignment: .leading){
                         Text("Food")
-                            .font(.title2)
-                            .foregroundStyle(.white)
+                            .font(.title3)
+                            .foregroundStyle(.black)
                         Text("Delicious things we eat to enjoy and stay healthy")
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color(.color))
                             .font(.caption)
                             .lineLimit(2)
                         
                     }
+                    .padding(8)
                 }
-                .padding(8)
-                .frame(width: 366, height: 114)
-                .background(Color(.color))
+                .padding(6)
+                .frame(width: 360, height: 114)
+                .background(Color(.white))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
-                
-                
+                .shadow(color: Color(.color),radius: 6)
+                .padding(.horizontal)
+                .padding(.vertical,7)
                 
             }
+            
         }
+        
     }
 }
 

@@ -104,9 +104,12 @@ struct ComponentTextField: View {
                 .stroke(lineWidth: 1.5)
                 .foregroundStyle(.color)
         }
+        
+      
+        
+        
     }
 }
-
 #Preview {
     ComponentTextField()
 }

@@ -21,10 +21,11 @@ struct HomeView: View {
                         .resizable()
                         .clipShape(RoundedRectangle(cornerRadius: 50))
                         .frame(width: 50, height: 50)
+                        .shadow(radius: 7)
                     
                     Text("Hello, Abod")
                         .font(.headline)
-                        .foregroundStyle(Color("MainColor"))
+                        .foregroundStyle(Color(.color))
                         .padding(.horizontal, 8)
                     
                     Spacer()
@@ -35,7 +36,7 @@ struct HomeView: View {
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .font(.system(size: 24))
-                            .foregroundStyle(Color(red: 0.8, green: 0.3, blue: 0.0))
+                            .foregroundStyle(Color(.color))
                             .fontWeight(.bold)
                     }
                 }
@@ -44,17 +45,20 @@ struct HomeView: View {
                 .padding()
                 
                 ScrollView(.vertical){
+                
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
+                        HStack(spacing: 16) {
                             ForEach(image, id: \.self) { item in
                                 HStack(spacing:8){
                                     RoundedRectangle(cornerRadius: 30)
                                         .frame(width: 333,height: 150)
-                                        .foregroundStyle(Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.8))
+                                        .foregroundStyle(.white)
+                                        .shadow(color: Color(.color),radius: 6)
+                                    
                                     
                                     
                                         .overlay {
-                                            HStack {
+                                            HStack{
                                                 Image("\(item)")
                                                     .resizable()
                                                     .scaledToFit()
@@ -63,18 +67,19 @@ struct HomeView: View {
                                                 Text("Spacial offer on Biryani Limited time")
                                                     .font(.system(size: 15))
                                                     .fontWeight(.regular)
-                                                    .foregroundStyle(.orange)
+                                                    .foregroundStyle(.black)
                                                     .lineLimit(2)
                                                     .multilineTextAlignment(.center)
                                             }
                                             .padding(.vertical,10)
                                         }
+                                        .padding(.vertical,5)
                                 }
                             }
                         }
                         .padding(.horizontal)
                     }
-                    
+                    .padding(.vertical,5)
                     HStack{
                         Text("Stores")
                             .foregroundStyle(Color.color)
@@ -87,7 +92,7 @@ struct HomeView: View {
                     
                     
                     Spacer()
-                        .padding()
+                        .padding(5)
                     //
                     ProudectView()
                 }
