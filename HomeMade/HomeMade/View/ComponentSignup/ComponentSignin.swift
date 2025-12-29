@@ -19,12 +19,12 @@ struct ComponentSignin: View {
                 .fontWeight(.bold)
                 .foregroundStyle(.color)
             
-            TextField(text: $username, label: {
+            TextField(text: $authVM.email, label: {
                 Text("Username")
                     .foregroundStyle(.gray)
                 
                 // add this is  becusea if user edit error the message disappers
-                    .onChange(of: username){
+                    .onChange(of: authVM.email){
                         authVM.error = ""
                     }
             })
@@ -40,16 +40,29 @@ struct ComponentSignin: View {
             
             
             HStack {
-                TextField(text: $password, label: {
-                    Text("Password")
-                        .foregroundStyle(.gray)
-                    
-                    // add this becusae if user edit error the message disappears
-                        .onChange(of: password){
-                            authVM.error = ""
-                        }
-                    
-                })
+                if isOpenEye {
+                    TextField(text: $authVM.password, label: {
+                        Text("Password")
+                            .foregroundStyle(.gray)
+                        
+                        // add this becusae if user edit error the message disappears
+                            .onChange(of: authVM.password){
+                                authVM.error = ""
+                            }
+                        
+                    })
+                }else{
+                    SecureField(text: $authVM.password, label: {
+                        Text("Password")
+                            .foregroundStyle(.gray)
+                        
+                        // add this becusae if user edit error the message disappears
+                            .onChange(of: authVM.password){
+                                authVM.error = ""
+                            }
+                        
+                    })
+                }
                 
                 // If you intended a visible border, consider using an overlay with a small lineWidth:
                 
@@ -76,7 +89,7 @@ struct ComponentSignin: View {
         }
         VStack(spacing: 16) {
             Button {
-                authVM.login(email: username, password: password)
+                authVM.login()
                 
                 
             } label: {
@@ -87,6 +100,16 @@ struct ComponentSignin: View {
             .frame(width: 300,height: 48)
             .background(Color(.color))
             .clipShape(RoundedRectangle(cornerRadius: 400))
+            
+            // show Error Massage
+            if !authVM.error.isEmpty{
+                
+                Text(authVM.error)
+                    .foregroundStyle(.red)
+                    .frame(width: 300, height: 48)
+                    //.background(.black)
+                  //  .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
             
             // image Apple and Google
             HStack(spacing: 8){

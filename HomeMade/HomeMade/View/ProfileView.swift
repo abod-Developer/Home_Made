@@ -15,6 +15,16 @@ struct ProfileView: View {
                 
                 //image and info
                 HStack{
+                    Button {
+                        authVM.signout()
+                    } label: {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                            .foregroundStyle(.red)
+                        
+                    }
+                  
+                   // .padding(5)
+
                     Spacer()
                     VStack(spacing: 10){
                         Text("عبدالله")
@@ -46,6 +56,11 @@ struct ProfileView: View {
                 
                 
             }
+        }
+        if !authVM.error.isEmpty{
+            Text(authVM.error)
+                .foregroundStyle(.red)
+                .frame(width: 300, height: 48)
         }
     }
 }

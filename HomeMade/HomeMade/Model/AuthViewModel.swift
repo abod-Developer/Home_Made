@@ -13,11 +13,15 @@ import FirebaseFirestore
 
 
 class AuthViewModel: ObservableObject{
+    
+    @Published var email : String = ""
+    @Published var password : String = ""
+    @Published var confirmPassword : String = ""
     @Published var isLoggedIn : Bool = false
     @Published var error : String = ""
     
     
-    func login(email : String, password : String){
+    func login(){
         
         Auth.auth().signIn(withEmail: email, password: password){ result , error in
             
@@ -31,7 +35,7 @@ class AuthViewModel: ObservableObject{
     }
     
     
-    func signup(email: String , password : String , confirmPassword : String, role : UserRole ){
+    func signup(role : UserRole ){
         guard password == confirmPassword else {
             self.error = "The Password and confirm passwors do not match"
             return
@@ -64,7 +68,7 @@ class AuthViewModel: ObservableObject{
     }
     
     
-    func signout(email : String , password : String){
+    func signout(){
         do{
             try Auth.auth().signOut()
             self.isLoggedIn = false

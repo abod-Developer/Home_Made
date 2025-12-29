@@ -12,7 +12,7 @@ struct SignupView: View {
     @State private var password : String = ""
     @State private var confirmPassword : String = ""
     @State private var selectedRole : UserRole = .customer
-    @StateObject var authVM = AuthViewModel()
+  
     
     let role : String
     var body: some View {
@@ -35,35 +35,7 @@ struct SignupView: View {
                     // textField
                     ComponentTextField()
 
-                    
-                    VStack {
-                        Button {
-                            authVM.signup(
-                                email: username,
-                                password: password,
-                                confirmPassword: confirmPassword,
-                                role: selectedRole
-                                
-                            )
-                            print("pqassword", password.count)
-                        } label: {
-                            Text("Sign Up")
-                                .bold()
-                                .foregroundStyle(.white)
-                        }
-                        .frame(width: 300,height: 48)
-                        .background(Color(.color))
-                        .clipShape(RoundedRectangle(cornerRadius: 400))
-                        
-                    }
-                    if !authVM.error.isEmpty{
-                        
-                        Text(authVM.error)
-                            .foregroundStyle(.red)
-                            .frame(width: 300, height: 48)
-                            .background(.black)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                    }
+                  
                     
                 }
             }
@@ -71,7 +43,7 @@ struct SignupView: View {
     }
 }
 #Preview {
-    SignupView(role: "")
+    SignupView( role: "")
         .environmentObject(AuthViewModel())
 }
 

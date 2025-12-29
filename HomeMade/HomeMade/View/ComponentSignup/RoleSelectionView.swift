@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoleSelectionView: View {
     @State private var selectRole: String? = nil
+    @State var userRole : UserRole = .customer
 
     var body: some View {
         VStack(spacing: 8) {
@@ -30,8 +31,9 @@ struct RoleSelectionView: View {
                             .padding(.bottom)
 
                         // this customer buttons
-                        Button {
-                            selectRole = "customer"
+                        NavigationLink {
+                            //selectRole = "customer"
+                            SignInView()
                         } label: {
                             Text("Custmer")
                                 .font(.headline)
@@ -42,8 +44,9 @@ struct RoleSelectionView: View {
                         }
 
                         // this is fimaly buttons
-                        Button {
-                            selectRole = "family"
+                        NavigationLink {
+                            //selectRole = "family"
+                            SignInView()
                         } label: {
                             Text("Productive Family")
                                 .font(.headline)
@@ -63,7 +66,7 @@ struct RoleSelectionView: View {
 
                 // Programmatic navigation link (no title string, provide a label closure)
                 NavigationLink(
-                    destination: SignupView(role: selectRole ?? ""),
+                    destination: SignupView( role: selectRole ?? ""),
 //                    isActive: Binding(
 //                        get: { selectRole != nil },
 //                        set: { if !$0 { selectRole = nil } }

@@ -13,6 +13,7 @@ struct SignInView: View {
     @State private var isOpenEye: Bool = false
     @State private var showSignUp = false
     @StateObject var authVM = AuthViewModel()
+    @State var userRole : UserRole = .customer
   
     var body: some View {
         NavigationStack {
@@ -26,19 +27,13 @@ struct SignInView: View {
                     // sign in
                     ComponentSignin()
                         
-                        // show Error Massage
-                        if !authVM.error.isEmpty{
-                            Text(authVM.error)
-                                .foregroundStyle(.red)
-                                .frame(width: 300, height: 48)
-                                .background(.black)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                        }
+                       
+                       
                         
                         
                         
                         
-                        NavigationLink(destination: SignupView(role: "")) {
+                    NavigationLink(destination: SignupView( role: "")) {
                             HStack {
                                 Text("Don't have an account?")
                                     .foregroundStyle(Color(.color))
