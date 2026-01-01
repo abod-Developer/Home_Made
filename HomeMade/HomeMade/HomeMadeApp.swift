@@ -18,12 +18,14 @@ class AppDelegate : NSObject, UIApplicationDelegate{
 
 @main
 struct HomeMadeApp: App {
+    @StateObject var authVM = AuthViewModel()
     // register app delegate for firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
 
             RootView()
+                .environmentObject(authVM)
         }
     }
 }

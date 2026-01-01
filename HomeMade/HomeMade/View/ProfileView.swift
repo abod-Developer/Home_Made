@@ -17,6 +17,7 @@ struct ProfileView: View {
                 HStack{
                     Button {
                         authVM.signout()
+                        
                     } label: {
                         Image(systemName: "rectangle.portrait.and.arrow.right")
                             .foregroundStyle(.red)
@@ -57,15 +58,10 @@ struct ProfileView: View {
                 
             }
         }
-        if !authVM.error.isEmpty{
-            Text(authVM.error)
-                .foregroundStyle(.red)
-                .frame(width: 300, height: 48)
-        }
     }
 }
 
 #Preview {
     ProfileView()
-        .environmentObject(AuthViewModel())
+     .environmentObject(AuthViewModel())
 }

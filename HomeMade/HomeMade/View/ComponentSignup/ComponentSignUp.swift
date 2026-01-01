@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ComponentTextField: View {
     @State private var isOpenEye: Bool = false
-    @StateObject var authVM = AuthViewModel()
+    @EnvironmentObject var authVM : AuthViewModel
     var body: some View {
         VStack{
             TextField(text: $authVM.email) {
@@ -130,5 +130,6 @@ struct ComponentTextField: View {
 }
 #Preview {
     ComponentTextField()
+        .environmentObject(AuthViewModel())
     
 }

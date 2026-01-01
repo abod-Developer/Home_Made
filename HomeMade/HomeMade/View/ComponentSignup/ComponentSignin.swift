@@ -11,7 +11,7 @@ struct ComponentSignin: View {
     @State var username : String = ""
     @State var password : String = ""
     @State private var isOpenEye: Bool = false
-    @StateObject var authVM = AuthViewModel()
+    @EnvironmentObject var authVM : AuthViewModel
     var body: some View {
         VStack(spacing: 16){
             Text("Sign In")
@@ -129,4 +129,5 @@ struct ComponentSignin: View {
 
 #Preview {
     ComponentSignin()
+        .environmentObject(AuthViewModel())
 }

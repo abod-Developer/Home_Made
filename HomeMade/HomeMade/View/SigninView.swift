@@ -12,7 +12,7 @@ struct SignInView: View {
     @State var password : String = ""
     @State private var isOpenEye: Bool = false
     @State private var showSignUp = false
-    @StateObject var authVM = AuthViewModel()
+    @EnvironmentObject var authVM : AuthViewModel
     @State var userRole : UserRole = .customer
   
     var body: some View {

@@ -74,6 +74,7 @@ class AuthViewModel: ObservableObject{
             self.isLoggedIn = false
         }catch{
             self.error = "فشل في تسجيل الخروج"
+           
         }
         
     }
