@@ -8,20 +8,34 @@
 import SwiftUI
 
 struct SummaryBar: View {
+    @State private var animateViews = false
     var body: some View {
-        HStack{
-         statItem(title: "المشتريات", value: 2)
+        
+            HStack{
+                if animateViews{
+                    statItem(title: "المشتريات", value: 2)
+                    
+                    Divider()
+                    statItem(title: " المبيعات المكتمله", value: 0)
+                    Divider()
+                    statItem(title: "المبيعات النشطة", value: 3)
+                    Divider()
+                    statItem(title: "اجمالي المبيعات", value: 2)
+                    Divider()
+                    
+                }
+            }
+            .frame(width: 380, height: 48)
+            .transition(.slide)
+            .animation(.easeInOut(duration: 1), value: animateViews)
+            
+            .onAppear{
                 
-                Divider()
-            statItem(title: " المبيعات المكتمله", value: 0)
-            Divider()
-            statItem(title: "المبيعات النشطة", value: 3)
-            Divider()
-            statItem(title: "اجمالي المبيعات", value: 2)
-            Divider()
-        }
-        .frame(width: 380, height: 48)
-       
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    animateViews = true
+                }
+            }
+        
     }
     func statItem(title : String , value : Int) -> some View{
         VStack(spacing : 6){
