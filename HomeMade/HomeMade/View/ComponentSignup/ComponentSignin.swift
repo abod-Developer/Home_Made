@@ -89,9 +89,10 @@ struct ComponentSignin: View {
         }
         VStack(spacing: 16) {
             Button {
-                authVM.login()
-                
-                
+                Task{
+                   await authVM.login(email: username, password: password)
+                    
+                }
             } label: {
                 Text("Sign In")
                     .bold()

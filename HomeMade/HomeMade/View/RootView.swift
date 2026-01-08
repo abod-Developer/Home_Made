@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+
 
 struct RootView: View {
-    @State private var isLoggedIn = Auth.auth().currentUser != nil
+    @EnvironmentObject var authVM : AuthViewModel
     
     var body: some View {
-        if isLoggedIn{
+        if authVM.isLoggedIn{
             HomeView()
              
         }else{
@@ -24,5 +24,6 @@ struct RootView: View {
 
 #Preview {
     RootView()
+        .environmentObject(AuthViewModel())
 }
 

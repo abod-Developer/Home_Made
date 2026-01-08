@@ -6,21 +6,21 @@
 //
 
 import SwiftUI
-import FirebaseCore
+import Supabase
 
-class AppDelegate : NSObject, UIApplicationDelegate{
-    func application(_ application : UIApplication, didFinishLaunchingWithOptions LaunchOptions : [UIApplication.LaunchOptionsKey : Any]? = nil ) -> Bool{
-        
-        FirebaseApp.configure()
-        return true
-    }
+//هذا السطر نفسه الملف الي نضيفه من فاير بيس
+class SupabaseConfig{
+    static let client = SupabaseClient(
+        supabaseURL: URL(string: "https://okzqtaathrworvyckyme.supabase.co/")!,
+        supabaseKey: "sb_publishable_Z9ELjZ3FyE6GIIyaAp_UNA_cpqMEoEm"
+    )
 }
 
 @main
 struct HomeMadeApp: App {
     @StateObject var authVM = AuthViewModel()
     // register app delegate for firebase setup
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
 

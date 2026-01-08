@@ -16,7 +16,9 @@ struct ProfileView: View {
                 //image and info
                 HStack{
                     Button {
-                        authVM.signout()
+                        Task {
+                             await authVM.signout()
+                        }
                         
                     } label: {
                         Image(systemName: "rectangle.portrait.and.arrow.right")

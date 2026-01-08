@@ -106,7 +106,9 @@ struct ComponentTextField: View {
             
             
             Button {
-                authVM.signup(role: .customer)
+                Task {
+                   await authVM.signup(role: .customer)
+                }
             
             } label: {
                 Text("Sign Up")
