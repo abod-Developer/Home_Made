@@ -30,33 +30,52 @@ class AuthViewModel: ObservableObject{
                 await MainActor.run{
                     self.user = session.user
                     self.isLoggedIn = true
+                    
                 }
+               
             }else{
                 // اذا مافيه جلسه 
                 await MainActor.run {
                     self.isLoggedIn = false
                 }
             }
+        print("مشكله تسجيل الدخول ")
             
             
        
     }
     
     func login(email : String , password: String) async{
-        isLoggedIn = true
-        defer{isLoggedIn = false}
-        
+        // نتاكد ان الايميل و الباسورد مهب فاضين
+        guard !email.isEmpty && !password.isEmpty else{
+            await MainActor.run{self.error = "Email/Password missing"}
+            return
+        }
+    
         do{
             // نطلب من سوبايس يسجل دخول
-            try await client.auth.signIn(email: email, password: password)
+            let response = try await client.auth.signIn(email: email, password: password)
             print("You have been logged in successfully")
             // بعد نجاح العمليه نجيب بيانات المستخدم
-            self.user = client.auth.currentUser
+            //self.user = client.auth.currentUser
+            // اذا نجحت العمليه نحدث MainActor
+            await MainActor.run {
+                self.user = response.user
+                self.isLoggedIn = true
+                self.error = ""
+                
+            }
             
         }catch{
-            self.error = error.localizedDescription
-            print("Login Error \(error)")
+            await MainActor.run {
+                self.error = error.localizedDescription
+                self.isLoggedIn = false
+                print("Login Error \(error)")
+            }
+          
         }
+        
+        print("erorrrrrrrrrrrrrr")
         
 
     }
@@ -95,6 +114,7 @@ class AuthViewModel: ObservableObject{
     
     
     func signout() async{
+        print("error in sing out")
         do{
             // هنا نطلب من سوبايس انهى الجلسه
             try await client.auth.signOut()
