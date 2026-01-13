@@ -21,6 +21,7 @@ class AuthViewModel: ObservableObject{
     @Published var confirmPassword : String = ""
     @Published var isLoggedIn : Bool = false
     @Published var error : String = ""
+    @Published var userRole :UserRole? = nil
     
     
     

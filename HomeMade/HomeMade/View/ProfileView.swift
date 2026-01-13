@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var authVM : AuthViewModel
+    let role : UserRole
     var body: some View {
         ScrollView {
             VStack{
@@ -64,6 +65,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(role: .family)
      .environmentObject(AuthViewModel())
 }

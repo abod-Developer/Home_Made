@@ -19,7 +19,7 @@ struct HomeView: View {
                 VStack {
                     HStack {
                         NavigationLink{
-                            ProfileView()
+                            ProfileView(role: .family)
                             
                         }label: {
                             Image(.images1)

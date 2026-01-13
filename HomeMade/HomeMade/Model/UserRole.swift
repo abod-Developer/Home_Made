@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum UserRole : String , CaseIterable{
+enum UserRole : String , CaseIterable, Codable{
     case family = " اسرة منتجة"
     case customer = "عميل"
 }
